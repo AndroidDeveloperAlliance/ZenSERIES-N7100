@@ -6,22 +6,27 @@
 #include <linux/workqueue.h>
 
 enum {
-	ICQ_IOPRIO_CHANGED,
-	ICQ_CGROUP_CHANGED,
+
 };
 
-struct io_cq {
-	struct request_queue    *q;
-	struct io_context       *ioc;
+struct cfq_io_context {
+	struct request_queue *q;
 
-	struct list_head        q_node;
-	struct hlist_node       ioc_node;
+	struct cfq_queue *cfqq[2];
 
-	unsigned long           changed;
-	struct rcu_head         rcu_head;
+	struct io_context *ioc;
 
-	void (*exit)(struct io_cq *);
-	void (*release)(struct io_cq *);
+	struct cfq_ttime ttime;
+
+	struct list_head queue_list;
+	struct hlist_node cic_list;
+
+	unsigned long changed;
+
+	void (*exit)(struct cfq_io_context *);
+	void (*release)(struct cfq_io_context *);
+
+	struct rcu_head rcu_head;
 };
 
 /*
