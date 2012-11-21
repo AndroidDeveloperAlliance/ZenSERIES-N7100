@@ -177,6 +177,11 @@ int s3c_adc_start(struct s3c_adc_client *client,
 	client->wait = pwake;
 	client->result = -1;
 
+	if (client->is_ts && adc->ts_pend) {
+		spin_unlock_irqrestore(&adc->lock, flags);
+		return -EAGAIN;
+	}
+
 	client->channel = channel;
 	client->nr_samples = nr_samples;
 
