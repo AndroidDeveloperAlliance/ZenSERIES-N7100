@@ -30,14 +30,14 @@
  * It helps to keep variable names smaller, simpler
  */
 
-#define DEF_FREQUENCY_DOWN_DIFFERENTIAL		(5)
-#define DEF_FREQUENCY_UP_THRESHOLD		(85)
-#define MICRO_FREQUENCY_DOWN_DIFFERENTIAL	(10)
-#define MICRO_FREQUENCY_UP_THRESHOLD		(80)
-#define MICRO_FREQUENCY_MIN_SAMPLE_RATE		(10000)
+#define DEF_FREQUENCY_DOWN_DIFFERENTIAL		(10)
+#define DEF_FREQUENCY_UP_THRESHOLD		(80)
+#define MICRO_FREQUENCY_DOWN_DIFFERENTIAL	(3)
+#define MICRO_FREQUENCY_UP_THRESHOLD		(85)
+#define MICRO_FREQUENCY_MIN_SAMPLE_RATE		(20000)
 #define MIN_FREQUENCY_UP_THRESHOLD		(11)
 #define MAX_FREQUENCY_UP_THRESHOLD		(100)
-#define DEF_SUSPEND_FREQ				(500000)
+#define DEF_SUSPEND_FREQ			(400000)
 
 /*
  * The polling frequency of this governor depends on the capability of
@@ -49,7 +49,7 @@
  * this governor will not work.
  * All times here are in uS.
  */
-#define MIN_SAMPLING_RATE_RATIO			(1)
+#define MIN_SAMPLING_RATE_RATIO			(2)
 
 static unsigned int min_sampling_rate;
 
